@@ -92,7 +92,9 @@
 
 <script>
 import axios from "axios";
-
+import Vue from "vue";
+import Notifications from "vue-notification";
+Vue.use(Notifications);
 export default {
   name: "VehicleList",
   data() {
@@ -127,9 +129,21 @@ export default {
         .then((response) => {
           this.load();
           console.log(response);
+          this.$notify({
+            group: "foo",
+            type: "success",
+            title: "Important message",
+            text: "Data has been successfully added",
+          });
         })
         .catch((error) => {
           console.log(error);
+          this.$notify({
+            group: "foo",
+            type: "error",
+            title: "Important message",
+            text: "Data failed to add",
+          });
         });
     },
   },

@@ -3,6 +3,7 @@
     <div class="container">
       <div class="card mb-3">UCC Test Vehicle</div>
       <VehicleList />
+      <notifications group="foo" />
     </div>
   </div>
 </template>
