@@ -42,19 +42,23 @@
           </div>
           <div class="form-group">
             <label class="float-left" for="engine_displacement"
-              >Engine Displacement</label
+              >Engine Displacement (L/CC)</label
             >
             <input
               type="text"
+              @keypress="onlyNumber"
               class="form-control"
               v-model="engine_displacement"
               placeholder="Engine Displacement"
             />
           </div>
           <div class="form-group">
-            <label class="float-left" for="engine_power">Engine power</label>
+            <label class="float-left" for="engine_power"
+              >Engine power (HP)</label
+            >
             <input
               type="text"
+              @keypress="onlyNumber"
               class="form-control"
               v-model="engine_power"
               placeholder="Engine Power"
@@ -145,6 +149,14 @@ export default {
             text: "Data failed to add",
           });
         });
+    },
+    onlyNumber($event) {
+      //console.log($event.keyCode); //keyCodes value
+      let keyCode = $event.keyCode ? $event.keyCode : $event.which;
+      if ((keyCode < 48 || keyCode > 57) && keyCode !== 46) {
+        // 46 is dot
+        $event.preventDefault();
+      }
     },
   },
 };
