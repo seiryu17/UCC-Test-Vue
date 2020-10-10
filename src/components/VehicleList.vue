@@ -65,9 +65,10 @@
             />
           </div>
           <div class="form-group">
-            <label class="float-left" for="price">Price</label>
+            <label class="float-left" for="price">Price ($)</label>
             <input
               type="text"
+              @keypress="onlyNumber"
               class="form-control"
               v-model="price"
               placeholder="Price"
